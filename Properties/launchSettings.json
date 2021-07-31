@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Cross Game SharedPC": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\Games\\Pokemon\\Pokemon Reborn 18.4.1"
+    }
+  }
+}
