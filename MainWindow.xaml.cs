@@ -135,7 +135,7 @@ namespace CrossGameSharedPC
         {
             StreamReader sr = new(filePath);
             string[] directories = new string[gameNames.Length];
-            for (int i = 0; i < gameNames.Length; i++) //TODO take into account hasLocalSaveGames and read directory
+            for (int i = 0; i < gameNames.Length; i++)
             {
                 string? line = sr.ReadLine();
 
@@ -169,7 +169,11 @@ namespace CrossGameSharedPC
             {
                 if (i == latest) continue; //Skip overwriting itself
 
+                if (!saveFiles[i].Exists)
+                    File.Create(saveFiles[i].FullName).Close();
+
                 _ = saveFiles[latest].CopyTo(saveFiles[i].FullName, true);
+
                 _ = StatusLog.Items.Add("Copied " + saveFiles[latest] + " to " + saveFiles[i].FullName);
             }
         }
