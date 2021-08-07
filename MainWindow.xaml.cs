@@ -18,7 +18,7 @@ namespace CrossGameSharedPC
     {
         private static DirectoryInfo DirectoryFolder => new(Directory.GetCurrentDirectory());
         private string[] gameNames = new string[] { "Reborn", "Rejuvenation", "Desolation" };
-        private string gameName;
+        private string? gameName;
         private static bool HasLocalSaveGames => File.Exists(Path.Combine("Data", "Mods", "SWM - LocalSavegames.rb"));
 
         private string saved_games = Environment.GetEnvironmentVariable("USERPROFILE") + @"\Saved Games";
@@ -53,13 +53,13 @@ namespace CrossGameSharedPC
 
         private void CheckCurrentGame()
         {
-            if (gameNames.Contains(DirectoryFolder.Name))
-                gameName = gameNames.First(c => DirectoryFolder.Name.Contains(c));
+            for (int i = 0; i < gameNames.Length; i++)
+                if (DirectoryFolder.Name.Contains(gameNames[i]))
+                    gameName = gameNames[i];
 
-            if (gameName != null)
-                _ = StatusLog.Items.Add("Identified current game as: " + gameName);
-            else
-                _ = StatusLog.Items.Add("Couldn't identify current game, are you sure the folder name is correct?");
+            _ = gameName != null
+                ? StatusLog.Items.Add("Identified current game as: " + gameName)
+                : StatusLog.Items.Add("Couldn't identify current game, are you sure the folder name is correct?");
 
             //Check if SWM - LocalSavegames exists in mod folder
             string text = "Found ";

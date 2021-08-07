@@ -5,8 +5,9 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>C:\Users\Dunng\source\repos\CrossGameSharedPC\Hybrid.ico</ApplicationIcon>
-    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>  
+    <ApplicationIcon>C:\Users\Dunng\Documents\GitHub\Cross-Game-Shared-PC\Hybrid.ico</ApplicationIcon>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <BaseOutputPath></BaseOutputPath>  
   </PropertyGroup>
 
 </Project>
